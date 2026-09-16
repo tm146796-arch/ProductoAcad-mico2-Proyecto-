@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ajustarBarrasDelSistema(findViewById(R.id.rootScroll));
 
         db = new DatabaseHelper(this);
 
@@ -38,6 +40,24 @@ public class MainActivity extends Activity {
         btnListar.setOnClickListener(v -> listar());
         btnActualizar.setOnClickListener(v -> actualizar());
         btnEliminar.setOnClickListener(v -> eliminar());
+    }
+
+    private void ajustarBarrasDelSistema(View vista) {
+        int izquierda = vista.getPaddingLeft();
+        int arriba = vista.getPaddingTop();
+        int derecha = vista.getPaddingRight();
+        int abajo = vista.getPaddingBottom();
+
+        vista.setOnApplyWindowInsetsListener((v, insets) -> {
+            v.setPadding(
+                    izquierda + insets.getSystemWindowInsetLeft(),
+                    arriba + insets.getSystemWindowInsetTop(),
+                    derecha + insets.getSystemWindowInsetRight(),
+                    abajo + insets.getSystemWindowInsetBottom()
+            );
+            return insets;
+        });
+        vista.requestApplyInsets();
     }
 
     private String texto(EditText campo) {
