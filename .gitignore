@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# Local environment
+local.properties
+
+# Generated Android artifacts
+*.apk
+*.ap_
+*.aab
+*.dex
+
+# Java / Kotlin build outputs
+*.class
+out/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
