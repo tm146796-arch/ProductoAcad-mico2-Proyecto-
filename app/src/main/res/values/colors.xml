@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_fondo">#F4F7FB</color>
+    <color name="color_panel">#FFFFFF</color>
+    <color name="color_texto">#1F2937</color>
+    <color name="color_texto_suave">#64748B</color>
+    <color name="color_borde">#D6DEE9</color>
+    <color name="color_primario">#2563EB</color>
+    <color name="color_primario_oscuro">#1D4ED8</color>
+    <color name="color_peligro">#DC2626</color>
+</resources>

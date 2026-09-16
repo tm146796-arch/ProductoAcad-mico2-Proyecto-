@@ -3,92 +3,157 @@
     android:id="@+id/rootScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_fondo"
     android:clipToPadding="false"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingLeft="16dp"
+    android:paddingTop="18dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="18dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="20dp"
-            android:text="Registro de Solicitudes de Soporte"
-            android:textSize="22sp"
+            android:text="Solicitudes de soporte"
+            android:textColor="@color/color_texto"
+            android:textSize="27sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ID para actualizar o eliminar"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/etSolicitante"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre del solicitante"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/etProblema"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Descripción del problema"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minLines="2" />
-
-        <EditText
-            android:id="@+id/etPrioridad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Prioridad: Baja, Media o Alta"
-            android:inputType="textCapWords" />
-
-        <EditText
-            android:id="@+id/etEstado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Estado: Pendiente, En proceso o Cerrado"
-            android:inputType="textCapSentences" />
-
-        <Button
-            android:id="@+id/btnGuardar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar solicitud" />
-
-        <Button
-            android:id="@+id/btnListar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Listar solicitudes" />
-
-        <Button
-            android:id="@+id/btnActualizar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Actualizar solicitud" />
-
-        <Button
-            android:id="@+id/btnEliminar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Eliminar solicitud" />
-
         <TextView
-            android:id="@+id/tvResultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:text="Sin registros"
-            android:textIsSelectable="true"
-            android:textSize="16sp" />
+            android:layout_marginTop="6dp"
+            android:text="Registro y seguimiento de atenciones"
+            android:textColor="@color/color_texto_suave"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_panel"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datos de la solicitud"
+                android:textColor="@color/color_texto"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etId"
+                style="@style/CampoFormulario"
+                android:hint="ID para actualizar o eliminar"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etSolicitante"
+                style="@style/CampoFormulario"
+                android:hint="Nombre del solicitante"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etProblema"
+                style="@style/CampoFormulario"
+                android:layout_height="86dp"
+                android:gravity="top"
+                android:hint="Descripcion del problema"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minLines="3"
+                android:paddingTop="12dp" />
+
+            <EditText
+                android:id="@+id/etPrioridad"
+                style="@style/CampoFormulario"
+                android:hint="Prioridad: Baja, Media o Alta"
+                android:inputType="textCapWords" />
+
+            <EditText
+                android:id="@+id/etEstado"
+                style="@style/CampoFormulario"
+                android:hint="Estado: Pendiente, En proceso o Cerrado"
+                android:inputType="textCapSentences" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/BotonFormulario"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_boton_primario"
+                android:text="Guardar solicitud"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnListar"
+                    style="@style/BotonFormulario"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_boton_secundario"
+                    android:text="Listar"
+                    android:textColor="@color/color_primario_oscuro" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="1dp" />
+
+                <Button
+                    android:id="@+id/btnActualizar"
+                    style="@style/BotonFormulario"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_boton_secundario"
+                    android:text="Actualizar"
+                    android:textColor="@color/color_primario_oscuro" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnEliminar"
+                style="@style/BotonFormulario"
+                android:background="@drawable/bg_boton_peligro"
+                android:text="Eliminar solicitud"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_panel"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Solicitudes registradas"
+                android:textColor="@color/color_texto"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvResultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Sin registros"
+                android:textColor="@color/color_texto_suave"
+                android:textIsSelectable="true"
+                android:textSize="15sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
