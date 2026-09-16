@@ -8,4 +8,6 @@
     <color name="color_primario">#2563EB</color>
     <color name="color_primario_oscuro">#1D4ED8</color>
     <color name="color_peligro">#DC2626</color>
+    <color name="color_error">#DC2626</color>
+    <color name="color_error_fondo">#FFF1F2</color>
 </resources>

@@ -32,10 +32,44 @@
             android:textColor="@color/color_texto_suave"
             android:textSize="15sp" />
 
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTabNuevo"
+                    style="@style/BotonTab"
+                    android:text="Nuevo" />
+
+                <Button
+                    android:id="@+id/btnTabListar"
+                    style="@style/BotonTab"
+                    android:text="Listar" />
+
+                <Button
+                    android:id="@+id/btnTabEditar"
+                    style="@style/BotonTab"
+                    android:text="Editar" />
+
+                <Button
+                    android:id="@+id/btnTabBorrar"
+                    style="@style/BotonTab"
+                    android:text="Borrar" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/tabNuevo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
             android:background="@drawable/bg_panel"
             android:elevation="2dp"
             android:orientation="vertical"
@@ -44,22 +78,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Datos de la solicitud"
+                android:text="Nueva solicitud"
                 android:textColor="@color/color_texto"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etId"
-                style="@style/CampoFormulario"
-                android:hint="ID para actualizar o eliminar"
-                android:inputType="number" />
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Solicitante (requerido)" />
 
             <EditText
                 android:id="@+id/etSolicitante"
                 style="@style/CampoFormulario"
                 android:hint="Nombre del solicitante"
                 android:inputType="textPersonName" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Problema (requerido)" />
 
             <EditText
                 android:id="@+id/etProblema"
@@ -71,11 +107,19 @@
                 android:minLines="3"
                 android:paddingTop="12dp" />
 
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Prioridad (requerido)" />
+
             <EditText
                 android:id="@+id/etPrioridad"
                 style="@style/CampoFormulario"
                 android:hint="Prioridad: Baja, Media o Alta"
                 android:inputType="textCapWords" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Estado (requerido)" />
 
             <EditText
                 android:id="@+id/etEstado"
@@ -90,51 +134,18 @@
                 android:background="@drawable/bg_boton_primario"
                 android:text="Guardar solicitud"
                 android:textColor="@android:color/white" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnListar"
-                    style="@style/BotonFormulario"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_boton_secundario"
-                    android:text="Listar"
-                    android:textColor="@color/color_primario_oscuro" />
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="1dp" />
-
-                <Button
-                    android:id="@+id/btnActualizar"
-                    style="@style/BotonFormulario"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_boton_secundario"
-                    android:text="Actualizar"
-                    android:textColor="@color/color_primario_oscuro" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnEliminar"
-                style="@style/BotonFormulario"
-                android:background="@drawable/bg_boton_peligro"
-                android:text="Eliminar solicitud"
-                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tabListar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:background="@drawable/bg_panel"
             android:elevation="2dp"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -144,15 +155,150 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/btnListar"
+                style="@style/BotonFormulario"
+                android:background="@drawable/bg_boton_secundario"
+                android:text="Actualizar lista"
+                android:textColor="@color/color_primario_oscuro" />
+
             <TextView
                 android:id="@+id/tvResultado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="Sin registros"
                 android:textColor="@color/color_texto_suave"
                 android:textIsSelectable="true"
                 android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabEditar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Actualizar solicitud"
+                android:textColor="@color/color_texto"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="ID (requerido)" />
+
+            <EditText
+                android:id="@+id/etIdActualizar"
+                style="@style/CampoFormulario"
+                android:hint="ID de la solicitud"
+                android:inputType="number" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Solicitante (requerido)" />
+
+            <EditText
+                android:id="@+id/etSolicitanteActualizar"
+                style="@style/CampoFormulario"
+                android:hint="Nuevo nombre del solicitante"
+                android:inputType="textPersonName" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Problema (requerido)" />
+
+            <EditText
+                android:id="@+id/etProblemaActualizar"
+                style="@style/CampoFormulario"
+                android:layout_height="86dp"
+                android:gravity="top"
+                android:hint="Nueva descripcion del problema"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minLines="3"
+                android:paddingTop="12dp" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Prioridad (requerido)" />
+
+            <EditText
+                android:id="@+id/etPrioridadActualizar"
+                style="@style/CampoFormulario"
+                android:hint="Nueva prioridad"
+                android:inputType="textCapWords" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="Estado (requerido)" />
+
+            <EditText
+                android:id="@+id/etEstadoActualizar"
+                style="@style/CampoFormulario"
+                android:hint="Nuevo estado"
+                android:inputType="textCapSentences" />
+
+            <Button
+                android:id="@+id/btnActualizar"
+                style="@style/BotonFormulario"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_boton_primario"
+                android:text="Actualizar solicitud"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabBorrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eliminar solicitud"
+                android:textColor="@color/color_texto"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Ingresa el ID del registro que deseas eliminar."
+                android:textColor="@color/color_texto_suave"
+                android:textSize="15sp" />
+
+            <TextView
+                style="@style/EtiquetaCampo"
+                android:text="ID (requerido)" />
+
+            <EditText
+                android:id="@+id/etIdEliminar"
+                style="@style/CampoFormulario"
+                android:hint="ID de la solicitud"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btnEliminar"
+                style="@style/BotonFormulario"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_boton_peligro"
+                android:text="Eliminar solicitud"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
